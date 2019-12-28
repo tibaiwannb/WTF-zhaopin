@@ -185,8 +185,7 @@
 <script>
   import {findAllEmployment} from "../../api/employment";
   import config from '../../utils/config'
-  import {saveOrUpdate} from "../../api/employment";
-  import {BusinessfindById} from "../../api/business";
+  import {saveOrUpdateEmployment} from "../../api/employment";
 
   export default {
     data() {
@@ -308,7 +307,7 @@
         }
         // row.status = '待审核';
         try {
-          let res = await saveOrUpdate(row);
+          let res = await saveOrUpdateEmployment(row);
           this.findAllEmp();
         }catch (e) {
         }
@@ -318,7 +317,7 @@
         row.status = '拒绝';
         this.dialogFormVisible=false;
         try {
-          let res = await saveOrUpdate(row);
+          let res = await saveOrUpdateEmployment(row);
           this.findAllEmpiness();
         }catch (e) {
         }

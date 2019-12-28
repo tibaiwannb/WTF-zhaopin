@@ -183,7 +183,7 @@
   //导入函数
   import {findAllBusiness} from "../../api/business";
   import config from '../../utils/config'
-  import {saveOrUpdate} from "../../api/business";
+  import {saveOrUpdateBusiness} from "../../api/business";
 
   export default {
   data() {
@@ -304,7 +304,7 @@
       }
       // row.status = '待审核';
       try {
-        let res = await saveOrUpdate(row);
+        let res = await saveOrUpdateBusiness(row);
         this.findAllBus();
       }catch (e) {
       }
@@ -314,7 +314,7 @@
       row.status = '拒绝';
       this.dialogFormVisible=false;
       try {
-        let res = await saveOrUpdate(row);
+        let res = await saveOrUpdateBusiness(row);
         this.findAllBusiness();
       }catch (e) {
       }

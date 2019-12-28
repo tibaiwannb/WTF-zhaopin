@@ -159,12 +159,13 @@
 // import qs from "qs";
 // import axios from "axios";
 // axios.defaults.baseURL = "http://127.0.0.1:8899";
-import { findAllJobhunter } from "@/api/city.js";
-import { saveOrUpdate } from "@/api/city.js";
+import { findAllJobhunter } from "@/api/user.js";
+import { saveOrUpdate } from "@/api/user.js";
 import config from "@/utils/config.js";
-import { JobhunterdeleteById } from "@/api/city.js";
-import { findJobhunterByEducation } from "@/api/city.js";
-import { findJobhunterByGender } from "@/api/city.js";
+import { JobhunterdeleteById } from "@/api/user.js";
+import { findJobhunterByEducation } from "@/api/user.js";
+import { findJobhunterByGender } from "@/api/user.js";
+
 
 
 export default {

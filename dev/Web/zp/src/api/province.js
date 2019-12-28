@@ -1,39 +1,37 @@
 /*
- * @Author: liuyr
+ * @Author: liuyr 
  * 省份模块API
- * @Date: 2019-12-22 18:54:17
+ * @Date: 2019-12-22 18:54:17 
  * @Last Modified by: liuyr
- * @Last Modified time: 2019-12-22 19:53:09
+ * @Last Modified time: 2019-12-25 09:37:38
  */
-
 import axios from '@/utils/axios'
-
-/* 查找数据 */
-export async function findAllProvince() {
-  let res = await axios.get('/Province/findAll');
-  return res;
-}
-
-/*
-* 通过id删除省份信息
-* */
-export function ProvincedeleteById(param) {
-  return axios.post('/Province/deleteById',param)
-}
-
-
 /**
- *查找全部省份信息通过id
+ * 通过id删除省份信息
+ * @param {Object} param {id:''} 
  */
-export function ProvincefindById(parm) {
-  return axios.get('/Province/findById',{params: parm})
+export function deleteProvinceById(param) {
+  return axios.post('/Province/deleteById', param);
 }
-
-
 /**
- *保存或更新省份信息
- * POST /Province/saveOrUpdate
+ * 查找所有省份信息
  */
-export function saveOrUpdate(parm) {
-  return axios.post('/Province/saveOrUpdate',parm)
+export function findAllProvince() {
+  return axios.get('/Province/findAll');
+}
+/**
+ * 通过id查找省份信息
+ * @param {Object} param {id:''}
+ */
+export function findProvinceById(param) {
+  return axios.get('/Province/findById', {
+    params: param
+  });
+}
+/**
+ * 保存或更新省份信息
+ * @param {Object} param
+ */
+export function saveOrUpdateProvince(param) {
+  return axios.post('/Province/saveOrUpdate', param);
 }
