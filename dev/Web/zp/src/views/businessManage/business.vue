@@ -2,8 +2,8 @@
  * @Author: liuyr 
  * 商家列表页面
  * @Date: 2019-12-23 17:11:53 
- * @Last Modified by: 957
- * @Last Modified time: 2019-12-27 20:44:22
+ * @Last Modified by: lins
+ * @Last Modified time: 2019-12-28 17:19:40
  */
 <template>
   <div id="businessList">
@@ -99,7 +99,7 @@
       </div>
     </el-dialog>
     <!-- 修改模态框 -->
-    <el-dialog title="修改商家信息" :visible.sync="editVisible" width="60%" :before-close="beforeClose">
+    <el-dialog :title="dialogTitle" :visible.sync="editVisible" width="60%" :before-close="beforeClose">
       <el-form :model="currentBus" :rules="rules" ref="ruleForm">
         <el-row :gutter="20">
           <el-col :span="12">
@@ -263,6 +263,7 @@ import config from "@/utils/config.js";
 export default {
   data() {
     return {
+      dialogTitle:'',
       //省份
       province: "",
       //城市
@@ -286,7 +287,7 @@ export default {
       //当前页
       currentPage: 1,
       //每页条数
-      pageSize: 10,
+      pageSize: config.pageSize,
       //批量删除ids
       ids: [],
       //当前查看或修改的对象
@@ -330,7 +331,7 @@ export default {
     businessList() {
       let temp = [...this.businessData];
       let page = this.currentPage;
-      let pageSize = this.pageSize;
+      let pageSize = config.pageSize;
       return temp.slice((page - 1) * pageSize, page * pageSize);
     }
   },
@@ -481,12 +482,13 @@ export default {
     },
     //编辑
     toEdit(row) {
+      this.dialogTitle = "编辑商家信息";
       this.currentBus = { ...row };
       this.editVisible = true;
     },
     //添加
     toadd(row) {
-      this.dialogTitle = "添加商家信息";
+      this.dialogTitle = "新增商家信息";
       this.currentBus={};
       this.editVisible = true;
       this.findAllBus();
