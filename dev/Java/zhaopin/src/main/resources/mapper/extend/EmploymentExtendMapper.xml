@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.zhaopin.mapper.extend.EmploymentExtendMapper">
+  <resultMap id="BaseResultMap" type="com.briup.apps.zhaopin.bean.Employment">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="contact_name" jdbcType="VARCHAR" property="contactName" />
+    <result column="contact_phone" jdbcType="VARCHAR" property="contactPhone" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="publish_time" jdbcType="TIMESTAMP" property="publishTime" />
+    <result column="welfare" jdbcType="VARCHAR" property="welfare" />
+    <result column="salary" jdbcType="VARCHAR" property="salary" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="num" jdbcType="BIGINT" property="num" />
+    <result column="business_id" jdbcType="BIGINT" property="businessId" />
+  </resultMap>
+
+
+  <select id="selectByJob"  resultMap="BaseResultMap">
+    select
+    *
+    from zp_employment
+    where job = #{job,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByCity"  resultMap="BaseResultMap">
+    select
+    *
+    from zp_employment
+    where city = #{city,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectByWelfare"  resultMap="BaseResultMap">
+    select
+    *
+    from zp_employment
+    where welfare  like "%"#{welfare}"%"
+  </select>
+
+  <select id="selectByTitle"  resultMap="BaseResultMap">
+    select
+    *
+    from zp_employment
+    where title like "%"#{title}"%"
+  </select>
+
+</mapper>

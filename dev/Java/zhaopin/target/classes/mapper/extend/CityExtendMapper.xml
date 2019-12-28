@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.zhaopin.mapper.extend.CityExtendMapper">
+  <resultMap id="BaseResultMap" type="com.briup.apps.zhaopin.bean.City">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="province_id" jdbcType="BIGINT" property="provinceId" />
+  </resultMap>
+
+  <select id="selectByProvinceID" resultMap="BaseResultMap">
+    select 
+    *
+    from zp_city
+    where province_id = #{province_id,jdbcType=BIGINT}
+  </select>
+
+</mapper>

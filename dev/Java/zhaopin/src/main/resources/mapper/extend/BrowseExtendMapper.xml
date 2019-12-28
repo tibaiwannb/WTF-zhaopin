@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.apps.zhaopin.mapper.extend.BrowseExtendMapper">
+    <resultMap id="BaseResultExtendMap"
+               extends="com.briup.apps.zhaopin.mapper.BrowseMapper.BaseResultMap"
+               type="com.briup.apps.zhaopin.bean.extend.BrowseExtend">
+        <association property="jobhunter" column="jobhunter_id"
+                     select="com.briup.apps.zhaopin.mapper.JobhunterMapper.selectByPrimaryKey"></association>
+        <association property="employment" column="employment_id"
+                     select="com.briup.apps.zhaopin.mapper.EmploymentMapper.selectByPrimaryKey"></association>
+    </resultMap>
+<!--111111111111111111111111111-->
+    <select id="selectAllWithEmpAndJob" resultMap="BaseResultExtendMap">
+        select * from zp_browse;
+  </select>
+</mapper>

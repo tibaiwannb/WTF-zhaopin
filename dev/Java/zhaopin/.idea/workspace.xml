@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c98dbdac-e17c-4dd3-b610-b2a0ba155ffd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Browse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Browse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/BrowseExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/BrowseExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Business.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Business.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/BusinessExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/BusinessExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/CityExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/CityExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/CustomerServiceExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/CustomerServiceExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Employment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Employment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/EmploymentExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/EmploymentExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/EmploymentJobhunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/EmploymentJobhunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/EmploymentJobhunterExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/EmploymentJobhunterExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobTypeExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobTypeExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Jobhunter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Jobhunter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobhunterExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobhunterExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobhunterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobhunterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobhunterServiceExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobhunterServiceExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Jobs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Jobs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobsExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/JobsExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/MessageExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/MessageExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Province.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Province.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/ProvinceExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/ProvinceExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Welfare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/Welfare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/WelfareExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/WelfareExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/extend/BrowseExtend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/bean/extend/BrowseExtend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/config/Swagger2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/config/Swagger2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/BrowseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/BrowseMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/BusinessMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/BusinessMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/CityMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/CityMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/CustomerServiceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/CustomerServiceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/EmploymentJobhunterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/EmploymentJobhunterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/EmploymentMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/EmploymentMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/JobTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/JobTypeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/JobhunterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/JobhunterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/JobhunterServiceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/JobhunterServiceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/JobsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/JobsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/MessageMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/MessageMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/ProvinceMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/ProvinceMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/WelfareMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/mapper/WelfareMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/web/controller/EmploymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/briup/apps/zhaopin/web/controller/EmploymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BrowseMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BrowseMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/BusinessMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/BusinessMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CityMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CityMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/CustomerServiceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/CustomerServiceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/EmploymentJobhunterMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/EmploymentJobhunterMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/EmploymentMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/EmploymentMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/JobTypeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/JobTypeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/JobhunterMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/JobhunterMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/JobhunterServiceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/JobhunterServiceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/JobsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/JobsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/ProvinceMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/ProvinceMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/WelfareMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/WelfareMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/extend/BrowseExtendMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/extend/BrowseExtendMapper.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="zhaopin" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Card</find>
+      <find>CustomerService</find>
+      <find>card</find>
+      <find>cardService</find>
+      <find>者</find>
+      <find>false</find>
+      <find>path</find>
+      <find>Status</find>
+      <find>求职者</find>
+      <find>insert</find>
+      <find>zp_business</find>
+      <find>Business</find>
+      <find>business</find>
+      <find>商家</find>
+      <find>select</find>
+      <find>zp_jobhunter</find>
+      <find>Jobhunter</find>
+      <find>r</find>
+      <find>Jobs</find>
+      <find>jobhunterMapper</find>
+      <find>City</find>
+      <find>provinceService</find>
+      <find>ins</find>
+      <find>Employment</find>
+      <find>Location</find>
+      <find>location</find>
+      <find>jobhunter</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>job</replace>
+      <replace>Welfare</replace>
+      <replace>welfare</replace>
+      <replace>福利</replace>
+      <replace>职位</replace>
+      <replace>message</replace>
+      <replace>Jobs</replace>
+      <replace>true</replace>
+      <replace>query</replace>
+      <replace>Location</replace>
+      <replace>客服服务</replace>
+      <replace>zp_employment</replace>
+      <replace>employment</replace>
+      <replace>zp_jobhunter</replace>
+      <replace>jobhunter</replace>
+      <replace>求职者</replace>
+      <replace>zp_customer_service</replace>
+      <replace>CustomerService</replace>
+      <replace>客服</replace>
+      <replace>customerservice</replace>
+      <replace>provinceMapper</replace>
+      <replace>JobType</replace>
+      <replace>jobTypeMapper</replace>
+      <replace>jobTypeService</replace>
+      <replace>Employment</replace>
+      <replace>Jobhunter</replace>
+      <replace>Province</replace>
+      <replace>province</replace>
+      <replace>City</replace>
+      <replace>city</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="userSettingsFile" value="D:\Briup\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UrZg50WlFBuDYKO84B8dar6cP7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../student" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\material\CC\Work\zhaopinwang\zhaopin\src\main\java\com\briup\apps\zhaopin\config" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.briup.apps.zhaopin.mapper.extend" />
+      <recent name="com.briup.apps.zhaopin.web.controller" />
+      <recent name="com.briup.apps.zhaopin.bean.extend" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\material\CC\Work\zhaopin\code\server\zhaopin\src\main\resources\mapper\extend" />
+      <recent name="D:\material\CC\Work\zhaopinwang\zhaopin\src\main\java\com\briup\apps\zhaopin\config" />
+      <recent name="D:\material\CC\Work\zhaopinwang\zhaopin\src\main\java\com\briup\apps\zhaopin" />
+      <recent name="D:\material\CC\Work\zhaopinwang\zhaopin\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="ZhaopinApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="zhaopin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.briup.apps.zhaopin.ZhaopinApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c98dbdac-e17c-4dd3-b610-b2a0ba155ffd" name="Default Changelist" comment="" />
+      <created>1568891103967</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568891103967</updated>
+      <workItem from="1568891107468" duration="9041000" />
+      <workItem from="1568901941171" duration="751000" />
+      <workItem from="1568939227966" duration="7761000" />
+      <workItem from="1568948610727" duration="12660000" />
+      <workItem from="1569026883604" duration="21279000" />
+      <workItem from="1569143049319" duration="2355000" />
+      <workItem from="1569209956329" duration="6282000" />
+      <workItem from="1569234869938" duration="2984000" />
+      <workItem from="1569287050693" duration="10608000" />
+      <workItem from="1569305101792" duration="2645000" />
+      <workItem from="1569313482864" duration="677000" />
+      <workItem from="1569323672353" duration="1383000" />
+      <workItem from="1569377959858" duration="2273000" />
+      <workItem from="1569462325914" duration="18302000" />
+      <workItem from="1569496092888" duration="2818000" />
+      <workItem from="1569499801707" duration="4317000" />
+      <workItem from="1569546315475" duration="14569000" />
+      <workItem from="1569722857474" duration="14352000" />
+      <workItem from="1569811615436" duration="1919000" />
+      <workItem from="1569913826508" duration="2203000" />
+      <workItem from="1570421204033" duration="1299000" />
+      <workItem from="1570588397599" duration="87000" />
+      <workItem from="1575623375629" duration="795000" />
+      <workItem from="1575789445997" duration="1912000" />
+      <workItem from="1575792777019" duration="652000" />
+      <workItem from="1576072645265" duration="992000" />
+      <workItem from="1576073921814" duration="156000" />
+      <workItem from="1576116784228" duration="203000" />
+      <workItem from="1576116999645" duration="626000" />
+      <workItem from="1576117656336" duration="6007000" />
+      <workItem from="1576139175162" duration="9888000" />
+      <workItem from="1576226016143" duration="1574000" />
+      <workItem from="1576397759060" duration="564000" />
+      <workItem from="1576398479629" duration="3247000" />
+      <workItem from="1576928046399" duration="6732000" />
+      <workItem from="1577010866062" duration="6285000" />
+      <workItem from="1577448485834" duration="294000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="73" key="#Project_Structure" timestamp="1576116874154">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="73" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1576116874154" />
+    <state x="549" y="170" key="FileChooserDialogImpl" timestamp="1577448772740">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1577448772740" />
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom" timestamp="1577010930119">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1577010930119" />
+    <state width="1493" height="261" key="GridCell.Tab.2.center" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.2.left" timestamp="1577010930118">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1577010930118" />
+    <state width="1493" height="261" key="GridCell.Tab.2.right" timestamp="1577010930119">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1577010930119" />
+    <state width="1493" height="255" key="GridCell.Tab.3.bottom" timestamp="1576141628412">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.3.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576141628412" />
+    <state width="1493" height="255" key="GridCell.Tab.3.center" timestamp="1576141628412">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.3.center/0.0.1536.824@0.0.1536.824" timestamp="1576141628412" />
+    <state width="1493" height="255" key="GridCell.Tab.3.left" timestamp="1576141628412">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.3.left/0.0.1536.824@0.0.1536.824" timestamp="1576141628412" />
+    <state width="1493" height="255" key="GridCell.Tab.3.right" timestamp="1576141628412">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="255" key="GridCell.Tab.3.right/0.0.1536.824@0.0.1536.824" timestamp="1576141628412" />
+    <state x="272" y="57" key="SettingsEditor" timestamp="1576117861714">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="272" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1576117861714" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1576117555178">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1576117555178" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/zhaopin$ZhaopinApplication.ic" NAME="ZhaopinApplication Coverage Results" MODIFIED="1576116920796" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
