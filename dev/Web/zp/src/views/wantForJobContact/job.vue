@@ -84,6 +84,7 @@ import { findAllWithJobhAndEmpl } from "@/api/employment.js";
 export default {
   data() {
     return {
+      currentChange:'',
       //默认分页为第一页
       currentPage:1,
       //简历的对话框，默认为不显示

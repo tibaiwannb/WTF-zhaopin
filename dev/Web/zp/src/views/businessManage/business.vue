@@ -286,7 +286,7 @@ export default {
       //当前页
       currentPage: 1,
       //每页条数
-      pageSize: config.pageSize,
+      pageSize: 10,
       //批量删除ids
       ids: [],
       //当前查看或修改的对象
@@ -330,7 +330,7 @@ export default {
     businessList() {
       let temp = [...this.businessData];
       let page = this.currentPage;
-      let pageSize = config.pageSize;
+      let pageSize = this.pageSize;
       return temp.slice((page - 1) * pageSize, page * pageSize);
     }
   },
