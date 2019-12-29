@@ -24,7 +24,8 @@ function errorMsg(that,msg) {
     message: msg
   });
 
-}
+};
+let  pageSize=10;
 //成功提示
 function successMsg(that,msg) {
   that.$notify({
@@ -35,8 +36,11 @@ function successMsg(that,msg) {
 function test(row) {
   return row
 }
+
 export default {
+  pageSize,
   test,
   errorMsg,
+  successMsg,
   bp,
 };

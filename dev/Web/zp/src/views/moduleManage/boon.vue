@@ -3,26 +3,39 @@
  * 福利管理页面
  * @Date: 2019-12-23 17:11:53 
  * @Last Modified by: lixf
- * @Last Modified time: 2019-12-27 22:55:26
+ * @Last Modified time: 2019-12-29 00:34:26
  */
 <template>
-  <div id="moduleBoon">福利管理页面{{WelfareData}}
+  <div id="moduleBoon">
+    <!-- {{WelfareData}} -->
     <div class="tableDiv">
 
       <el-input v-model="input" placeholder="请输入要查找的内容"></el-input>
+      <br />
+      <br />
 
       <el-table ref="multipleTable" :data="WelfareList" tooltip-effect="dark" style="width: 100%" @selection-change="selectionChange">
         <el-table-column align="center" type="selection" width="55"></el-table-column>
         <el-table-column align="center" prop="id" label="福利编号"></el-table-column>
         <el-table-column align="center" prop="name" label="福利内容"></el-table-column>
-        <el-table-column align="center" prop="status" label="福利状态"></el-table-column>
+        <el-table-column align="center" prop="status" label="福利状态">
+          <template slot-scope="scope">
+            <div v-html="scope.row.status" v-if="scope.row.status == '使用中'" style="color:#67C23A"></div>
+            <div v-html="scope.row.status" v-if="scope.row.status == '冻结中'" style="color:#F56C6C"></div>
+          </template>
+        </el-table-column>
         
-        <el-table-column align="center" label="操作" width="100">
+        <el-table-column align="center" label="状态操作" width="200">
+          <template slot-scope="scope">
+            <el-button size="mini" type="success" @click="changeStatus_1(scope.row)">使用</el-button>
+            <el-button size="mini" type="danger" @click="changeStatus_2(scope.row)">冻结</el-button>
+          </template>
+        </el-table-column>
+
+        <el-table-column align="center" label="整体操作" width="100">
           <template slot-scope="scope">
             <el-button type="text" @click="toEdit(scope.row)" size="small">编辑</el-button>
             <el-button type="text" size="small" @click="toDelete(scope.row.id)">删除</el-button>
-            <el-button size="mini" type="success" @click="changeStatus_1(scope.row)">使用</el-button>
-            <el-button size="mini" type="danger" @click="changeStatus_2(scope.row)">冻结</el-button>
           </template>
         </el-table-column>
       </el-table>

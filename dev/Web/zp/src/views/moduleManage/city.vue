@@ -3,15 +3,17 @@
  * 城市管理页面
  * @Date: 2019-12-23 17:11:53 
  * @Last Modified by: lixf
- * @Last Modified time: 2019-12-27 23:01:47
+ * @Last Modified time: 2019-12-29 00:09:42
  */
 <template>
-  <div id="moduleCity">城市管理页面
+  <div id="moduleCity">
     <!-- {{this.province}} -->
     <div>
 
-      <el-button @click="toAdd1" size="small" type="primary">新增省份</el-button>
-      <el-button @click="toAdd" size="small" type="primary">新增城市</el-button>
+      <el-button @click="toAdd1" size="small" type="primary" round>新增省份</el-button>
+      <el-button @click="toAdd" size="small" type="success" round>新增城市</el-button>
+      <br />
+      <br />
 
       <el-table :data="provinceData">
         
@@ -58,7 +60,7 @@
           </el-form-item>
           <el-form-item label="所属省份" :label-width="formLabelWidth">
               <el-select v-model="province.provinceId" placeholder="请选择所属省份">
-                <el-option label="请选择" value></el-option>
+                <!-- <el-option label="请从下列的省份中选择" value></el-option> -->
                 <el-option 
                 v-for="(item,index) in provinceData" 
                 :key="index" 
@@ -131,7 +133,7 @@ export default {
         })
         setTimeout(()=>{
           this.provinceData = temp;
-        },2000)
+        },100)
       }catch(err){
         this.$notify.error({
           title: "错误",
@@ -161,7 +163,7 @@ export default {
             type: "success"
           });
       }catch(err){
-        console.log(err);
+        config.errorMsg(this, "城市或省份名字为空");
       }
     },
 
@@ -173,7 +175,7 @@ export default {
         this.findAllPro();
         this.$notify({
             title: "成功",
-            message: "保存成功",
+            message: "删除成功",
             type: "success"
           });
       }catch(err){
@@ -187,16 +189,16 @@ export default {
       //{...row}   把row展开，然后放到一个新的数组中(复制，使row不是同一个地址)
       this.province = {...row};
       // delete this.province.name;
-      console.log(this.province.name);
+      // console.log(this.province.name);
       this.dialogFormVisible = true
-      this.findAllPro();  
+      // this.findAllPro();  
     },
 
     //新增按钮1
     toAdd1(){
       this.diologTitle1="新增省份";
       this.province = {};
-      this.dialogFormVisible1 = true    
+      this.dialogFormVisible1 = true   ;
       this.findAllPro();       
     },
 
@@ -212,8 +214,8 @@ export default {
             message: "保存成功",
             type: "success"
           });
-      }catch(err){
-        console.log(err);
+      }catch(error){
+        config.errorMsg(this, "省份名字不能为空");
       }
     },
 
@@ -254,9 +256,9 @@ export default {
       //{...row}   把row展开，然后放到一个新的数组中(复制，使row不是同一个地址)
       this.province = {...row};
       // delete this.province.name;
-      console.log(this.province.name);
+      // console.log(this.province.name);
       this.dialogFormVisible1 = true
-      this.findAllPro();  
+      // this.findAllPro();  
     },
     
 
@@ -265,7 +267,7 @@ export default {
   created() {
     // this.findAllCi();
     this.findAllPro();
-    this.toSave();
+    // this.toSave();
     // this.findCityByPId();
     // this.findCityByProvinceId();
   },

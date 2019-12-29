@@ -5,17 +5,47 @@
  * @Last Modified by: liuyr
  * @Last Modified time: 2019-12-23 21:05:54
  */
- 11111
 <template>
     <div id="userList"> 
       <div class="zengjiadaoru">
-        <el-button @click="toAdd" type="primary" plain>添加用户</el-button>
-        <el-button type="success" plain>导入用户</el-button>
+        <el-button  @click="toAdd" type="primary" plain size="small">添加用户</el-button>
+        <el-button @click="toIn" type="success" plain size="small">导入用户</el-button>
         <br>
         <br>  
       </div>
-      
-      <div class="searchDiv">
+      <!-- 导入模态框 -->
+      <el-dialog
+        title="导入说明"
+        :visible.sync="toinVisible"
+        width="40%"
+        >
+        <div class="in">
+        <div class="intop">
+        <span>使用导入功能时，请按照模板规定的字段去填写对应信息，</span><br>
+        <span>您可以点击按钮下载模板表格，填写完后在下提交:</span>
+        <el-button size = "mini" type="primary" style="float: right;">下载模板</el-button>
+        </div>
+        <div class="incen">
+            <span>点击选择文件或将表格拖动到框内</span>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="inend">
+            <span style="text-align:center;"><el-button size = "mini" type="primary" plain>主要按钮</el-button></span>
+        </div>
+        </div>
+      </el-dialog>
+      <div class="searchDiv" style="float: left">
         <el-select @change="educationChange" size="mini" v-model="education" clearable placeholder="学历">
           <el-option v-for="item in educationData" :key="item" :label="item" :value="item"></el-option>
         </el-select>
@@ -23,11 +53,9 @@
           <el-option v-for="item in genderData" :key="item" :label="item" :value="item"></el-option>
         </el-select>
       </div>
-      <div class="Selete" style="margin-top: -30px; width:300px; float:right; ">
-        <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
-            <el-select v-model="input3" slot="prepend" placeholder="请选择">
-            </el-select>
-            <el-button slot="append" icon="el-icon-search"></el-button>
+      <div class="Selete" style="margin-bottom: 10px; width:300px; float:right; ">
+        <el-input placeholder="请输入内容" v-model="input3" class="input-with-select" size="mini">
+            <el-button slot="append" icon="el-icon-search" ></el-button>
           </el-input>
         </div>
         <div class="tableDiv">
@@ -98,67 +126,89 @@
         <el-button @click="toBatchDelete" size="mini" type="danger" plain>批量删除</el-button>
       </div>
     </div>
-            <div class="pagi">
-              <el-pagination
-                @current-change="currentChange"
-                :current-page.sync="currentPage"
-                size="mini"
-                background
-                layout="prev, pager, next"
-                :total="JobhunterData.length"
-              ></el-pagination>
-            </div>
+    <div class="pagi">
+        <el-pagination
+        @current-change="currentChange"
+        :current-page.sync="currentPage"
+        size="mini"
+        background
+        layout="prev, pager, next"
+        :total="JobhunterData.length"
+        ></el-pagination>
+      </div>
             
-            <el-dialog title="dialogTitle" :visible.sync="dialogFormVisible">
-          <el-form :model="saveOrUpdateData">
-            <!-- <el-form-item label="id号" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.id" auto-complete="off"></el-input>
-            </el-form-item> -->
-            <el-form-item label="用户名" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.username" auto-complete="off"></el-input>
+    <el-dialog :title="dialogTitle" :visible.sync="editVisible" width="60%" :before-close="beforeClose">
+      <el-form :model="currentJob" :rules="rules" ref="ruleForm">
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <el-form-item prop="username" label="用户名" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.username"></el-input>
             </el-form-item>
-            <el-form-item label="姓名" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.realname" auto-complete="off"></el-input>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item prop="realname" label="真实姓名" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.realname"></el-input>
             </el-form-item>
-            <el-form-item label="手机号" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.telephone" auto-complete="off"></el-input>
+          </el-col>
+        </el-row>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <el-form-item prop="birth" label="出生日期" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.birth"></el-input>
             </el-form-item>
-            <el-form-item label="性别" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.gender" auto-complete="off"></el-input>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item prop="currentStatus" label="求职状态" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.currentStatus"></el-input>
             </el-form-item>
-            <el-form-item label="出生年月" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.birth" auto-complete="off"></el-input>
+          </el-col>
+        </el-row>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <el-form-item prop="education" label="学历" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.education"></el-input>
             </el-form-item>
-            <el-form-item label="最高学历" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.education" auto-complete="off"></el-input>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item prop="gender" label="性别" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.gender"></el-input>
             </el-form-item>
-            <el-form-item label="求职状态" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.currentStatus" auto-complete="off"></el-input>
+          </el-col>
+        </el-row>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <el-form-item prop="password" label="密码" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.password"></el-input>
             </el-form-item>
-            <el-form-item label="密码" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.password" auto-complete="off"></el-input>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item prop="resume" label="简历" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.resume"></el-input>
             </el-form-item>
-            <el-form-item label="简历" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.resume" auto-complete="off"></el-input>
+          </el-col>
+        </el-row>
+        <el-row :gutter="20">
+          <el-col :span="12">
+            <el-form-item prop="telephone" label="手机号" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.telephone"></el-input>
             </el-form-item>
-            <el-form-item label="工作时间" :label-width="formLabelWidth">
-              <el-input v-model="saveOrUpdateData.workTime" auto-complete="off"></el-input>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item prop="workTime" label="工作时间" :label-width="formLabelWidth">
+              <el-input v-model="currentJob.workTime"></el-input>
             </el-form-item>
-          </el-form>
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="toSave()">确 定</el-button>
-          </div>
-        </el-dialog>
-
-        
+          </el-col>
+        </el-row>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button size="mini" @click="toCancel('ruleForm')">取 消</el-button>
+        <el-button size="mini" type="primary" @click="toSave('ruleForm')">确 定</el-button>
+      </div>
+    </el-dialog>    
     </div>
 </template>
 
 <script>
-// import qs from "qs";
-// import axios from "axios";
-// axios.defaults.baseURL = "http://127.0.0.1:8899";
 import { findAllJobhunter } from "@/api/user.js";
 import { saveOrUpdate } from "@/api/user.js";
 import config from "@/utils/config.js";
@@ -166,18 +216,21 @@ import { JobhunterdeleteById } from "@/api/user.js";
 import { findJobhunterByEducation } from "@/api/user.js";
 import { findJobhunterByGender } from "@/api/user.js";
 
-
-
 export default {
   name: "userList",
   data() {
     return {
-      dialogTitle:"添加信息",
+      toinVisible:false,
+      editVisible:false,
+      //查看模态框显示与否
+      // seeVisible: false,
+      //当前查看或修改的对象
+      currentJob: {},
+      dialogTitle:'',
       //修改模态框汉字的宽度
       formLabelWidth: "120px",
       //模态框的显示与否
       dialogFormVisible:false,
-      
       //当前页
       currentPage: 1,
       //id
@@ -215,7 +268,6 @@ export default {
       birthData: [],
       //学历数据
       educationData: [],
-
       saveOrUpdateData:[],
       Jobhunter:{
         birth:'',
@@ -249,9 +301,7 @@ export default {
         resume: [
           { required: true, message: "请输入简历", trigger: "change" }
         ],
-      currentStatus: [{ required: true, message: "请输入求职状态", trigger: "change" }]
-        // city: [{ required: true, message: "请输入密码", trigger: "change" }],
-        // city: [{ required: true, message: "请输入密码", trigger: "change" }]
+        currentStatus: [{ required: true, message: "请输入求职状态", trigger: "change" }]
       }
     };
   },
@@ -262,18 +312,31 @@ export default {
       let pageSize = 10;
       let page = this.currentPage;       
       return temp.slice((page - 1) * pageSize, page * pageSize);
-      
     }
   },
   methods: {
+    toIn(){
+      this.toinVisible = true
+    },
+    //右上角，模态框关闭之前
+    beforeClose() {
+      this.$refs["ruleForm"].resetFields();
+      this.editVisible = false;
+    },
+    //关闭模态框
+    toCancel(formName) {
+      //重置表单验证，关闭模态框
+      this.$refs[formName].resetFields();
+      this.editVisible = false;
+    },
     //新增按钮
     toAdd(row) {
       this.dialogTitle = "添加信息";
       this.saveOrUpdateData = row;
-      this.dialogFormVisible = true;
+      this.editVisible = true;
       this.findAllJob();
     },
-    //c查找
+    //查找
       fenlei2 () {
         const search =this.input3;
         if (search) {
@@ -303,19 +366,19 @@ export default {
     },
     //学历信息发生改变
     async educationChange(val) {
-      // console.log('----'+val);
-      // this.id = "";
-      // this.gender = "";
-      // this.username = "";
-      // this.realname = "";
-      // this.telephone = "";
-      // this.birth = "";
+      this.gender = "";
       // this.education = "";
-      // this.scale = "";
-      //val 是option的value值
+      this.id = "";
+      // this.gender = "";
+      this.username = "";
+      this.realname = "";
+      this.telephone = "";
+      this.birth = "";
+      // this.education = "";
       if (val) {
         try {
-          let res = await findJobhunterByEducation({education:val});
+          let res = await 
+          findJobhunterByEducation({education:val});
           // console.log(res);
           this.JobhunterData = res.data;
           // console.log(res);
@@ -343,7 +406,8 @@ export default {
       //val 是option的value值
       if (val) {
         try {
-          let res = await findJobhunterByGender({ gender: val });
+          let res = await 
+          findJobhunterByGender({ gender: val });
           this.JobhunterData = res.data;
           this.currentPage = 1;
         } catch (error) {
@@ -383,7 +447,7 @@ export default {
                   config.errorMsg(this, "批量删除失败");
                 }
                 this.findAllJob();
-              }, 2000);
+              }, 200);
             }
           }
         });
@@ -418,6 +482,7 @@ export default {
             if (res.status === 200) {
               config.successMsg(this, "删除成功");
               this.findAllJob();
+              this.editVisible = false;
             } else {
               config.errorMsg(this, "删除失败");
             }
@@ -432,31 +497,37 @@ export default {
           });
         });
     },
-    //保存
-    async toSave(){
-      try {
-        let res = await saveOrUpdate(this.saveOrUpdateData);
-        this.dialogFormVisible = false;
-        this.findAllJob();
-        this.$notify({
-          title: "成功",
-          message: "保存成功",
-          type: "success"
-        });
-      } catch (error) {
-        console.log(error);
-      }
-     },
     //修改按钮
     toEdit(row) {
       this.dialogTitle = "修改信息";
-      this.saveOrUpdateData = row;
-      this.dialogFormVisible = true;
-      // console.log(row);
-      // console.log(this.saveOrUpdateData);
-      
-      
-      // this.saveOrUpdateData();
+      this.currentJob = { ...row };
+      this.editVisible = true;
+    },
+    //保存
+    toSave(formName) { 
+      this.$refs[formName].validate(async valid => {
+        if (valid) {
+          //保存
+          try {
+            let res = await saveOrUpdate(this.currentJob);
+            if (res.status === 200) {
+              this.findAllJob();
+              this.$refs[formName].resetFields();
+              this.editVisible = false;
+              config.successMsg(this, "修改成功");
+            } else {
+              config.errorMsg(this, "修改失败");
+            }
+          } catch (error) {
+            //console.log(error);
+            config.errorMsg(this, "修改失败");
+          }
+        }
+         else {
+          console.log("error submit!!");
+          return false; 
+          }
+      });
     },
     currentChange(val) {
       //val是当前点击的页数
@@ -471,7 +542,6 @@ export default {
         // setTimeout(() => {
         //   this.JobhunterData = temp;
         // },2000);
-
         //学历去重
          this.JobhunterData = temp
         let educationArr = res.data.map(item => {
@@ -479,10 +549,8 @@ export default {
         });
         //去重
         this.educationData = [...new Set(educationArr)];
-        console.log(this.JobhunterData);
-            console.log(this.educationData);
-           
-           
+        // console.log(this.JobhunterData);
+            // console.log(this.educationData);
            //性别去重
             this.JobhunterData = temp
         let genderArr = res.data.map(item => {
@@ -490,20 +558,16 @@ export default {
         });
         //去重
         this.genderData = [...new Set(genderArr)];
-        console.log(this.JobhunterData);
-            console.log(this.genderData);
-        
+        // console.log(this.JobhunterData);
+            // console.log(this.genderData);
       }
       catch(err){
         console.log(err);
       }
     },
-
   },
   created() {
     this.findAllJob();
-  
-    // this.toDelete();
   },
   mounted() {}
 };
@@ -524,10 +588,21 @@ export default {
   text-align: right;
   margin-top: 10px;
  }
-  // .zengjiadaoru{
-  //   // float: right;
-  //   // margin-top: px
-  // }
+ .intop{
+   height: 100px;
+ }
+ .incen{
+   position: absolute;
+   width: 250px;
+   height: 150px;
+   background-color: white;
+   border-style: dashed;
+   left: 32%;
+   border-width: 2px;
+ }
+ .inend{
+   margin-right: -3px;
+   text-align: center;
+ }
 }
-
 </style>

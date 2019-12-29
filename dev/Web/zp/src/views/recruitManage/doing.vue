@@ -1,9 +1,9 @@
 /*
  * @Author: liuyr 
- * 招聘中页面
+ * 招聘完结页面
  * @Date: 2019-12-23 17:03:30 
  * @Last Modified by: littorio
- * @Last Modified time: 2019-12-28 11:35:46
+ * @Last Modified time: 2019-12-29 11:31:33
  */
 <template>
 
@@ -14,28 +14,24 @@
       <div class="searchL" >
       <el-select @change="jobChange" size="mini" v-model="job" clearable placeholder="职业类型" style="float: left; margin-top:18px; ">
         <el-option
-          v-for="item in EmploymentData"
+          v-for="item in jobData"
           :key="item.id"
-          :label="item.job"
-          :value="item.job"
+          :label="item.name"
+          :value="item.name"
         ></el-option>
       </el-select>
     </div>
     <div class="searchR">
-    <el-input placeholder="请输入内容" v-model="input3" class="input-with-select" style="width:300px; float:right; margin-top: 15px; " clearable>
-    <el-select v-model="select" slot="prepend" placeholder="请选择">
-      <el-option label="餐厅名" value="1"></el-option>
-      <el-option label="订单号" value="2"></el-option>
-      <el-option label="用户电话" value="3"></el-option>
-    </el-select>
-    <el-button @click="fenlei2" slot="append" icon="el-icon-search"></el-button>
+    <el-input size="mini" placeholder="请输入内容" v-model="input3" prefix-icon="el-icon-search" style="width:300px; float:right; margin-top: 15px; " clearable>
+    
+    
   </el-input>
  </div>
  </div>
  
     <div class="a">
     <el-button @click="toAdd" size =  "mini" type="primary">发布职位</el-button> 
-    <el-button size =  "mini" type="primary">导入职位</el-button>
+    <el-button @click="toIn" size =  "mini" type="primary">导入职位</el-button>
     </div>
 
     <el-table size = 'mini' 
@@ -82,6 +78,7 @@
       label="发布时间"
       align="center">
     </el-table-column>
+   
     <el-table-column align="center" label="详情">
           <template slot-scope="scope">
             <el-button @click="toSee(scope.row)" type="text" size="small">查看</el-button>
@@ -97,15 +94,14 @@
       </template>
     </el-table-column>
     
-    
   </el-table>
    
     <!--弹窗-->
 
-<el-dialog :title="dialogTitle" :visible.sync="dialogFormVisible" width="60%" :before-close="beforeClose">
+<el-dialog   :title="dialogTitle" :visible.sync="dialogFormVisible" width="60%" :before-close="beforeClose">
   <el-form :model="Employment" :rules="rules" ref="ruleForm"> 
   <!-- 第一行 -->
-  <el-form-item prop="title" label="兼职名称" :label-width="formLabelWidth">
+  <el-form-item  prop="title" label="兼职名称" :label-width="formLabelWidth">
       <el-input v-model="Employment.title" auto-complete="off"></el-input>
     </el-form-item>
     
@@ -113,8 +109,7 @@
   <el-row :gutter="20">
     <el-col :span="12"><div class="grid-content bg-purple">
       <el-form-item prop="job" label="选择工种" :label-width="formLabelWidth">
-      <el-select v-model="Employment.job" placeholder="请选择活动区域">
-        
+      <el-select clearable v-model="Employment.job" placeholder="请选择活动区域">
         <el-option v-for="(item ,index) in jobData" :key="index" :label="item.name" :value="item.name"></el-option>
       </el-select>
     </el-form-item></div>
@@ -129,8 +124,8 @@
   <!-- 第三行 -->
      <el-row :gutter="20">
         <el-col :span="12"><div class="grid-content bg-purple">
-          <el-form-item prop="businessId" label="招聘公司" :label-width="formLabelWidth">
-      <el-select clearable @change="dialogBusChange" v-model="Employment.businessId" placeholder="请选择活动区域">
+          <el-form-item required prop="businessId"  label="招聘公司" :label-width="formLabelWidth">
+      <el-select  clearable @change="dialogBusChange" v-model="Employment.businessId" placeholder="请选择公司">
        
         <el-option v-for="(item ,index) in BusinessData" :key="index" :label="item.name" :value="item.id"></el-option>
       </el-select>
@@ -149,40 +144,75 @@
     <!-- 第五行 -->
     <el-row :gutter="20">
       <el-col :span="12"><div class="grid-content bg-purple">
-      <el-form-item prop="status" label="发布状态" :label-width="formLabelWidth">
-        <el-input v-model="Employment.status" auto-complete="off"></el-input>
-      </el-form-item></div></el-col>
+        <el-form-item required  prop="status"  label="发布状态">
+      <el-select  clearable   v-model="Employment.status" placeholder="请选择发布状态">
+      <el-option label="招聘中" value="招聘中"></el-option>
+      <el-option label="完结" value="完结"></el-option>
+    </el-select></el-form-item></div></el-col>
       
 
       <el-col :span="12"><div class="grid-content bg-purple-light">
         <el-form-item prop="workingHours" label="工作时间" :label-width="formLabelWidth">
-      <el-select v-model="Employment.workingHours" placeholder="请选择活动区域">
-        <el-option label="区域一" value="shanghai"></el-option>
-        <el-option v-for="(item ,index) in EmploymentData" :key="index" :label="item.workingHours" :value="item.workingHours"></el-option>
-      </el-select>
-    </el-form-item></div></el-col>
+        <el-input v-model="Employment.workingHours" auto-complete="off"></el-input>
+      </el-form-item></div></el-col>
     </el-row>
     <!-- 地六航 -->
 
     <el-row :gutter="20">
       
       <el-col :span="12"><div class="grid-content bg-purple">
-        <el-form-item prop="contactName" label="姓名" :label-width="formLabelWidth">
-      <el-select v-model="Employment.contactName" placeholder="请选择姓名">
+        <el-form-item  required prop="contactName" label="姓名" :label-width="formLabelWidth">
+      <el-select clearable v-model="Employment.contactName" placeholder="请选择姓名">
         
         <el-option v-for="(item ,index) in findNPbybusData" :key="index" :label="item.contactName" :value="item.contactName"></el-option>
       </el-select>
     </el-form-item></div></el-col>
       <el-col :span="12"><div class="grid-content bg-purple-light">
-        <el-form-item prop="contactPhone" label="电话" :label-width="formLabelWidth">
-      <el-select v-model="Employment.contactPhone" placeholder="请选择电话">
+        <el-form-item required prop="contactPhone" label="电话" :label-width="formLabelWidth">
+      <el-select clearable v-model="Employment.contactPhone" placeholder="请选择电话">
         
         <el-option v-for="(item ,index) in findNPbybusData" :key="index" :label="item.contactPhone" :value="item.contactPhone"></el-option>
       </el-select>
     </el-form-item></div></el-col>
     </el-row>
     <!-- 第7行 -->
-    
+            <el-row>
+              <el-form-item required label="所在城市" :label-width="formLabelWidth">
+                <el-col :span="12">
+                  <el-form-item clearable prop="province">
+                    <el-select
+                      clearable
+                      @change="dialogProChange"
+                      v-model="Employment.province"
+                      placeholder="请选择省份"
+                    >
+                      <el-option
+                        v-for="item in provinceData"
+                        :key="item.id"
+                        :label="item.name"
+                        :value="item.id"
+                      ></el-option>
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                  <el-form-item prop="city">
+                    <el-select clearable v-model="Employment.city" placeholder="请选择城市">
+                      <el-option
+                        v-for="item in provinceCityData"
+                        :key="item.id"
+                        :label="item.name"
+                        :value="item.name"
+                      ></el-option>
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+                </el-form-item>
+              </el-row>
+            
+         
+
+
     <el-form-item prop="description" label="职位描述">
       <el-input  type="textarea" v-model="Employment.description" ></el-input>
     </el-form-item>  
@@ -194,41 +224,83 @@
   </div>
 </el-dialog>
 <!-- 查看模态框 -->
+<!-- 模态框1 -->
     <el-dialog :title="Employment.title" :visible.sync="seeVisible">
       <div class="top">
       <div>
         <span><i class="el-icon-location-outline"> {{Employment.province}}</i></span>
         <span>-{{Employment.city}}</span>
-        
       </div>
+      <br>
       
       
-      <div class="">
-        <span class="P1">{{Employment.salary}}</span>
+
+      
+      <div class="P3">
+        
         
         <span>招人数：{{Employment.num}}</span>
       </div> 
-
-      <div class="P2">
-        <span style="float:right;">公司：{{Employment.businessId}}</span>      
-      </div>
-
-      <div>
+      
+      <br>
+      <div class="P4">
         <span>{{Employment.welfare}}</span>
         
       </div>
+
+     
+      <div  class="P1">
+        <span>{{Employment.salary}}</span>
+      </div>
+      
       </div>
       <div class="bottom">
         <span style="font-weight: bold;">职位描述：</span><br>
         {{Employment.description}}
       </div>
     </el-dialog>
+    <!-- 导入模态框 -->
+    <el-dialog
+    title="导入说明"
+    :visible.sync="toinVisible"
+    width="50%"
+    
+    >
+    <div class="in">
+    <div class="intop">
+    <span>使用导入功能时，请按照模板规定的字段去填写对应信息，</span><br>
+    <span>您可以点击按钮下载模板表格，填写完后在下提交:</span>
+    <el-button size = "mini" type="primary" style="float: right;">下载模板</el-button>
+    </div>
+    <div class="incen">
+     
+        <span>点击选择文件或将表格拖动到框内</span>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="inend">
+         <span style="text-align:center;"><el-button size = "mini" type="primary" plain>主要按钮</el-button></span>
 
+    </div>
+    
+    </div>
+   </el-dialog>
 <!-- 底部 -->
     <div class="footerDiv">
 <!-- 分页 -->
     <div class="pageDiv">
-    <el-pagination
+    <el-pagination 
+      size="mini"
      :page-size="pageSize"
       @current-change="currentChange" 
      :current-page.sync="currentPage"
@@ -248,19 +320,24 @@
   
 </template>
 
+
 <script>
+import { findAllProvince } from "@/api/province.js";
+import { findAllCity, findCityByProvinceId } from "@/api/city.js";
 import { findAllEmployment } from "@/api/employment.js";
-import { deleteEmploymentById } from "@/api/employment.js"
+import { deleteEmploymentById, findBusinessByJob } from "@/api/employment.js"
 import { saveOrUpdateEmployment} from "@/api/employment.js"
-import { findAllBusiness  } from "@/api/business.js"
+import { findAllBusiness, findBusinessById   } from "@/api/business.js"
 import { findAlljob } from "@/api/job.js"
+
 import config from "@/utils/config.js";
-import qs from "_qs@6.9.1@qs";
+
 export default {
   
   
   data() {
     return {
+      toinVisible: false,
       seeVisible: false,
       //动态标题
       dialogTitle:"修改招聘",
@@ -273,13 +350,18 @@ export default {
       formLabelWidth:"80px",
       currentPage:1,
       EmploymentData:[],
+      EmploymentData1:[],
       Employment:{
        
       },
+      cityData:[],
+      provinceData:[],
       //工种信息
       jobData:[],
       //商家信息
       BusinessData:[],
+      provinceCityData:[],
+      
       //批量删除ids
       ids: [],
        //校验规则
@@ -288,11 +370,11 @@ export default {
       rules: {
         title: [{ required: true, message: "请输入兼职名称", trigger: "blur" }],
         job: [
-          { required: true, message: "请选择工种", trigger: "blur" }
+          { required: true, message: "请选择工种", trigger: "change" }
         ],
         num: [{ required: true, message: "请输入招聘人数", trigger: "blur" }],
         businessId: [
-          { required: true, message: "请选择招聘公司", trigger: "blur" }
+          { required: true, message: "请选择招聘公司", trigger: "change" }
         ],
         salary: [
           { required: true, message: "请输入薪资水平", trigger: "blur" }
@@ -301,33 +383,30 @@ export default {
           { required: true, message: "请输入福利", trigger: "blur" }
         ],
         status: [
-          { required: true, message: "请输入发布状态", trigger: "blur" }
+          { required: true, message: "请输入发布状态", trigger: "change" }
         ],
         workingHours: [
           { required: true, message: "请输入工作时间", trigger: "blur" }
         ],
         contactName: [
-          { required: true, message: "请输入姓名", trigger: "blur" }
+          { required: true, message: "请输入姓名", trigger: "change" }
         ],
         contactPhone: [
-          { required: true, message: "请输入联系电话", trigger: "blur" }
+          { required: true, message: "请输入联系电话", trigger: "change" }
         ],
         description: [
-          { required: true, message: "请输入联系电话", trigger: "blur" }
+          { required: true, message: "请输入描述", trigger: "blur" }
         ],
         province: [
           { required: true, message: "请选择省份", trigger: "change" }
         ],
+
         city: [{ required: true, message: "请选择城市", trigger: "change" }]
       }
       
     };
   },
-  watch:{
-    input3(){
-      console.log(this.input3)  
-      }
-  },
+  
   computed: {
     
     EmploymentList(){
@@ -349,6 +428,23 @@ export default {
   },
   methods: {
     //模态框省份发生改变
+    async dialogProChange(val) {
+      // console.log(val);
+      //重置城市下拉列表
+      let temp = {...this.Employment};
+      temp.city = '',
+      this.Employment = temp;
+      // this.Employment.city = "";
+      //通过省份id获取城市
+      try {
+        let res = await findCityByProvinceId({ provinceId: val });
+        this.provinceCityData = res.data;
+      } catch (error) {
+        console.log(error);
+        config.errorMsg(this, "通过省份查找城市失败");
+      }
+    },
+    //模态框商家发生改变
     async dialogBusChange(val) {
       
       let temp = this.BusinessData;
@@ -406,22 +502,30 @@ export default {
     //保存
     
     async toSave(formName){ 
-        
-      
+        this.$refs[formName].validate(async valid => {
+        if (valid) {
+          
+          
+          
         try{
           let Employment1=this.Employment;
           
           delete Employment1.startTime;
           delete Employment1.endTime;
           delete Employment1.publishTime;
-          this.dialogFormVisible = false;
+          // this.dialogFormVisible = false;
           console.log(Employment1)
           let res = await saveOrUpdateEmployment(Employment1);
           this.init();
-          
+          this.toCancel(formName);
       }catch(err){
         console.log(err);
        }
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+        });
       },
     //增加
     toAdd() {
@@ -431,7 +535,13 @@ export default {
           this.getBusinessData();
           this.getjobData();
           
+
+          
         
+    },
+    //导入
+    toIn(){
+      this.toinVisible = true;
     },
     //查看
     toSee(row) {
@@ -457,6 +567,7 @@ export default {
       this.Employment = {...row};
       this.getBusinessData();
       this.getjobData();
+      
       // console.log(this.Employment);
       
     },
@@ -533,15 +644,18 @@ export default {
       
       //val 是option的value值
       if (val) {
+        console.log(val);
         try {
           let res = await findBusinessByJob({ job: val });
+          
           this.EmploymentData = res.data;
+          
           this.currentPage = 1;
         } catch (error) {
           config.errorMsg(this, "通过job查找招聘信息错误");
         }
       } else {
-        this.init();
+      this.init();
       }
     },
   async  init () {
@@ -551,6 +665,7 @@ export default {
         
         let res = await findAllEmployment();
         let temp = res.data;
+        
         // temp.forEach(item =>{
         //   let temp1 = item.status;
         //     if(temp1 == "完结"){
@@ -565,10 +680,14 @@ export default {
           return item1.status=="招聘中"
         })
          this.EmploymentData=result;
-          console.log(this.EmploymentData);
+          //console.log(this.EmploymentData);
+
+        let res1 = await findAllProvince();
+        this.provinceData = res1.data;
+        console.log(this.provinceData);
       }
       
-      catch(err){
+      catch (err){
         console.log(err);
         }
 
@@ -588,7 +707,7 @@ export default {
   async getjobData(){
         try{
           let res = await findAlljob();
-          
+          console.log(res.data);
           this.jobData = res.data;
         }catch (err){
           console.log(err);
@@ -597,9 +716,31 @@ export default {
       },    
     
   },
+  //获取省份信息
+  async findAllPro() {
+      try {
+        let res = await findAllProvince();
+        this.provinceData = res.data;
+        console.log(this.provinceData);
+      } catch (error) {
+        config.errorMsg(this, "查找错误");
+      }
+    },
+  //获取城市信息
+  async findAllCi() {
+      try {
+        let res = await findAllCity();
+        this.cityData = res.data;
+        console.log(this.cityData);
+      } catch (error) {
+        config.errorMsg(this, "查找错误");
+      }
+    },
   
   created() {
     this.init();
+    this.getjobData();
+
     
   },
   mounted() {
@@ -637,18 +778,52 @@ export default {
 .P1{
   font-size: 30px;
   color: orangered;
-  float:right;
+  position: absolute;
+  left: 87%;
+  bottom: 78%
 }
 .P2{
   position: absolute;
   left: 87%;
   bottom: 60%
+  
+}
+.P4{
+  
 }
 .bottom {
   height: 200px;
   border-top:1px solid #ccc;
+  font-weight: bold;
+  color: #777;
+  font-size: 12px;
+  line-height: 30px;
+  padding: 10px 0;
+  
 }
 .top{
   height: 100px;
+  font-size: 12px;
+}
+
+//导入模态框
+.in{
+    
+  }
+.intop{
+   height: 150px;
+}
+.incen{
+    position: absolute;
+    width: 250px;
+    height: 150px;
+    background-color: white;
+    border-style: dashed;
+    left: 33%;
+    border-width: 2px;
+    
+}
+.inend{
+   text-align:center;
 }
 </style>

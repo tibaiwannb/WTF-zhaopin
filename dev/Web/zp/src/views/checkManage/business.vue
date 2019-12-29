@@ -13,7 +13,7 @@
 <!--        v-model 绑定值-->
 <!--        clearable 是否可以清空选项默认false 即不写clearable就不能清空-->
 <!--        placeholder value=''时的下拉框的 即下拉框没下拉选择时下拉框显示的内容-->
-        <el-select v-model="value" clearable placeholder="全部" >
+        <el-select v-model="value" clearable placeholder="全部"  size="mini">
 <!--         el-option 下拉框选项内容for循环遍历options内容出来-->
 <!--          :label   显示值  :xxx="xx"传入的是变量xx  xxx="xx"传入的是值xx-->
 <!--          :value    传后台的值-->
@@ -311,7 +311,7 @@
     },
 //拒绝函数
     async disCheck(row) {
-      row.status = '拒绝';
+      row.status = '审核未通过';
       this.dialogFormVisible=false;
       try {
         let res = await saveOrUpdateBusiness(row);
@@ -338,7 +338,7 @@
     },
 
     //表格函数
-
+    //传入参数时勾选内容，不传入参数时清空
     toggleSelection(rows) {
       if (rows) {
         rows.forEach(row => {

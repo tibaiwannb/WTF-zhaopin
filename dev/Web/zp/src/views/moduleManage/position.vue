@@ -3,15 +3,17 @@
  * 职位管理页面
  * @Date: 2019-12-23 17:11:53 
  * @Last Modified by: lixf
- * @Last Modified time: 2019-12-28 15:05:51
+ * @Last Modified time: 2019-12-29 00:39:39
  */
 <template>
-  <div id="modulePosition">职位管理页面
+  <div id="modulePosition">
     <div>
-    {{jobData}}
+    <!-- {{jobData}} -->
 
-    <el-button @click="toAdd" size="small" type="primary">新增职位</el-button>
-    <el-button @click="toAdd1" size="small" type="primary">新增职位类型</el-button>
+    <el-button @click="toAdd1" size="small" type="primary" round>新增职位类型</el-button>
+    <el-button @click="toAdd" size="small" type="success" round>新增职位</el-button>
+    <br />
+    <br />
 
     <el-table :data="jobData">
         
@@ -26,8 +28,8 @@
 
                 <el-table-column align="right" label="操作" width="100">
                   <template slot-scope="scope">
-                    <el-button type="text" @click="toEdit(scope.row)" size="small">编辑</el-button>
-                    <el-button type="text" size="small" @click="toDelete(scope.row.id)">删除</el-button>
+                    <el-button type="text" style="color:#E6A23C" @click="toEdit(scope.row)" size="small">编辑</el-button>
+                    <el-button type="text" style="color:#F56C6C" size="small" @click="toDelete(scope.row.id)">删除</el-button>
                   </template>
                 </el-table-column>
 
@@ -57,7 +59,7 @@
             </el-form-item>
             <el-form-item label="职位类型" :label-width="formLabelWidth">
                 <el-select v-model="job.jobTypeId" placeholder="请选择职位类型">
-                  <el-option label="请选择" value></el-option>
+                  <!-- <el-option label="请选择" value></el-option> -->
                   <el-option 
                   v-for="(item,index) in jobData" 
                   :key="index" 
@@ -111,10 +113,17 @@ export default {
       diologTitle1:"新增职位类型",
       //表单左侧的文字宽度
       formLabelWidth:"130px",
+
+      defaultProps:{
+          children: 'job',
+          label: 'name'
+        },
+        
     };
   },
   computed: {},
   methods: {
+
     //查找所有职位类型，获取职位名字,将名字赋值给要传回后台的状态，通过状态找到职位类型所含的职位
     // async findAllJT(page){
     //   try{
@@ -161,7 +170,7 @@ export default {
         })
         setTimeout((items)=>{
           this.jobData = temps
-          },500)
+          },100)
         }catch (err) {
         this.$notify.error({
           title: "错误",
@@ -184,7 +193,7 @@ export default {
       this.job = {...row};
       console.log(this.job);
       this.dialogFormVisible = true
-      this.findAllJT();  
+      // this.findAllJT();  
     },
 
     //保存
@@ -200,7 +209,7 @@ export default {
             type: "success"
           });
       }catch(err){
-        console.log(err);
+        config.errorMsg(this, "职位类型或职位为空");
       }
     },
 
@@ -239,7 +248,7 @@ export default {
             type: "success"
           });
       }catch(err){
-        console.log(err);
+        config.errorMsg(this, "职位类型为空");
       }
     },
 
@@ -282,7 +291,7 @@ export default {
       // delete this.province.name;
       console.log(this.job);
       this.dialogFormVisible1 = true
-      this.findAllJT();  
+      // this.findAllJT();  
     },
 
   },

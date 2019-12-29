@@ -1,10 +1,3 @@
-/*
- * @Author: liuyr 
- * 商家列表页面
- * @Date: 2019-12-23 17:11:53 
- * @Last Modified by: 957
- * @Last Modified time: 2019-12-27 20:44:22
- */
 <template>
   <div id="businessList">
     <div class="searchDiv">
@@ -25,7 +18,7 @@
       <el-select @change="scaleChange" size="mini" v-model="scale" clearable placeholder="规模">
         <el-option v-for="item in scaleData" :key="item" :label="item" :value="item"></el-option>
       </el-select>
-       <el-button type="primary" @click="toadd" plain>新增</el-button>
+      <el-button size="mini" class="bu" type="primary" @click="toadd" plain>新增</el-button>
     </div>
     <div class="tableDiv">
       <el-table
@@ -48,7 +41,7 @@
             <el-button @click="toSee(scope.row)" type="text" size="small">查看</el-button>
           </template>
         </el-table-column>
-        <el-table-column align="center" label="操作" width="150">
+        <el-table-column align="center" label="操作" width="100">
           <template slot-scope="scope">
             <el-button type="text" @click="toEdit(scope.row)" size="small">编辑</el-button>
             <el-button type="text" size="small" @click="toDelete(scope.row.id)">删除</el-button>
@@ -71,8 +64,6 @@
         ></el-pagination>
       </div>
     </div>
-
-
     <!-- 查看模态框 -->
     <el-dialog :title="currentBus.name" :visible.sync="seeVisible">
       <div class="seeDiv">
@@ -99,7 +90,7 @@
       </div>
     </el-dialog>
     <!-- 修改模态框 -->
-    <el-dialog title="修改商家信息" :visible.sync="editVisible" width="60%" :before-close="beforeClose">
+    <el-dialog :title="dialogTitle" :visible.sync="editVisible" width="60%" :before-close="beforeClose">
       <el-form :model="currentBus" :rules="rules" ref="ruleForm">
         <el-row :gutter="20">
           <el-col :span="12">
@@ -175,19 +166,19 @@
           </el-col>
           <el-col :span="12">
             <el-form-item prop="registeredCapital" label="注册资本" :label-width="formLabelWidth">
-              <el-input v-model="currentBus.registeredCapital 	"></el-input>
+              <el-input v-model="currentBus.registeredCapital"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
-         <el-row :gutter="20">
+        <el-row :gutter="20">
           <el-col :span="12">
-            <el-form-item prop="businessLicense" label="营业执照" :label-width="formLabelWidth">
-              <el-input v-model="currentBus.businessLicense"></el-input>
+            <el-form-item prop="status" label="审核状态" :label-width="formLabelWidth">
+              <el-input v-model="currentBus.status"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item prop="status" label="状态" :label-width="formLabelWidth">
-              <el-input v-model="currentBus.status"></el-input>
+            <el-form-item prop="businessLicense" label="营业执照" :label-width="formLabelWidth">
+              <el-input v-model="currentBus.businessLicense"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
@@ -203,47 +194,12 @@
             </el-form-item>
           </el-col>
         </el-row>
-        <!-- <el-form-item label="活动区域" :label-width="formLabelWidth">
-          <el-select v-model="form.region" placeholder="请选择活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-form-item>-->
       </el-form>
-     
-       <!-- 查看模态框 -->
-    <el-dialog :title="currentBus.name" :visible.sync="seeVisible">
-      <div class="seeDiv">
-        <span>行业类型：</span>
-        {{currentBus.industry}}
-      </div>
-      <div class="seeDiv">
-        <span>成立时间：</span>
-        {{currentBus.establishedTime}}
-      </div>
-      <div class="seeDiv">
-        <span>注册资本：</span>
-        {{currentBus.registeredCapital}}
-      </div>
-      <div class="seeDiv">
-        <span>公司规模：</span>
-        {{currentBus.scale}}
-      </div>
-      <div class="descDiv">&nbsp;&nbsp;&nbsp;&nbsp;{{currentBus.description}}</div>
-      <div class="imgDiv">
-        <a :href="currentBus.businessLicense" target="_blank">
-          <img :src="currentBus.businessLicense" alt width="200" height="150" />
-        </a>
-      </div>
-    </el-dialog>
       <div slot="footer" class="dialog-footer">
-        <el-button size="mini" @click="toCancel('ruleForm')">取 消</el-button>
+        <el-button size="mini" @click="editVisible = false">取 消</el-button>
         <el-button size="mini" type="primary" @click="toSave('ruleForm')">确 定</el-button>
       </div>
     </el-dialog>
-
-
-    
   </div>
 </template>
 
@@ -285,8 +241,10 @@ export default {
       // businessList: [],
       //当前页
       currentPage: 1,
+      //
+      dialogTitle:'',
       //每页条数
-      pageSize: 10,
+      pageSize: config.pageSize,
       //批量删除ids
       ids: [],
       //当前查看或修改的对象
@@ -300,12 +258,19 @@ export default {
       //省份对应的城市信息
       provinceCityData: [],
       //校验规则
+      msg:"修改成功",
       rules: {
         name: [{ required: true, message: "请输入公司名称", trigger: "blur" }],
         industry: [
           { required: true, message: "请输入行业类型", trigger: "blur" }
         ],
+       
+        establishedTime: [{ required: true, message: "请输入公司成立时间", trigger: "blur" }],
+        registeredCapital: [{ required: true, message: "请输入公司注册资本", trigger: "blur" }],
+        businessLicense: [{ required: true, message: "请输入公司营业执照", trigger: "blur" }],
+        status: [{ required: true, message: "请输入公司营业执照", trigger: "blur" }],
         scale: [{ required: true, message: "请输入公司规模", trigger: "blur" }],
+        
         contactName: [
           { required: true, message: "请输入联系人", trigger: "blur" }
         ],
@@ -321,7 +286,8 @@ export default {
         province: [
           { required: true, message: "请选择省份", trigger: "change" }
         ],
-        city: [{ required: true, message: "请选择城市", trigger: "change" }]
+        city: [{ required: true, message: "请选择城市", trigger: "change" }],
+        
       }
     };
   },
@@ -330,7 +296,7 @@ export default {
     businessList() {
       let temp = [...this.businessData];
       let page = this.currentPage;
-      let pageSize = this.pageSize;
+      let pageSize = config.pageSize;
       return temp.slice((page - 1) * pageSize, page * pageSize);
     }
   },
@@ -347,7 +313,7 @@ export default {
       this.editVisible = false;
     },
     //保存
-    toSave(formName) {
+  async  toSave(formName) {
       this.$refs[formName].validate(async valid => {
         if (valid) {
           //通过验证
@@ -370,9 +336,9 @@ export default {
             if (res.status === 200) {
               this.findAllBus();
               this.editVisible = false;
-              config.successMsg(this, "修改成功");
+              config.successMsg(this,this.msg);
             } else {
-              config.errorMsg(this, "修改失败");
+              config.errorMsg(this, "添加失败");
             }
           } catch (error) {
             console.log(error);
@@ -388,7 +354,10 @@ export default {
     async dialogProChange(val) {
       // console.log(val);
       //重置城市下拉列表
-      this.currentBus.city = "";
+      // this.currentBus.city = "";
+      let temp = {...this.currentBus};
+      temp.city = '';
+      this.currentBus = temp;
       //通过省份id获取城市
       try {
         let res = await findCityByProvinceId({ provinceId: val });
@@ -481,15 +450,20 @@ export default {
     },
     //编辑
     toEdit(row) {
+      this.msg = "修改成功";
+      this.dialogTitle = "编辑商家信息";
       this.currentBus = { ...row };
       this.editVisible = true;
     },
     //添加
-    toadd(row) {
-      this.dialogTitle = "添加商家信息";
+    toadd() {
+      this.msg = "新增成功";
+      this.dialogTitle = "新增商家信息";
       this.currentBus={};
       this.editVisible = true;
       this.findAllBus();
+      this.findAllPro();
+      this.findAllCi();
     },
     //删除
     toDelete(id) {
@@ -620,9 +594,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.bu{
+  margin-left: 10px;
+}
 .tableDiv {
   margin-top: 10px;
-  line-height: 50px;
 }
 .footerDiv {
   overflow: hidden;

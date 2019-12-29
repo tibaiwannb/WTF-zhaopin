@@ -11,7 +11,7 @@
     <div>
       <div id="content">
         <div id="choice-type">
-          <el-select v-model="jobtype"  clearable placeholder="职位类型" @change="hh">
+          <el-select v-model="jobtype"  clearable placeholder="职位类型" @change="hh" size="mini">
             <el-option
               v-for="item in options"
               :key="item"
@@ -23,7 +23,7 @@
       </div>
   <!--    右边下拉框和选择-->
       <div id="right">
-        <el-input placeholder="请输入内容" v-model="myinput" class="input-with-select" style="width: 500px" clearable>
+        <el-input placeholder="请输入内容" v-model="myinput" class="input-with-select" style="width: 500px" clearable size="mini">
 <!--          <el-select v-model="keytype" slot="prepend" clearable placeholder="请选择" style="width: 120px" @change="hhhh">-->
 <!--            <el-option label="餐厅名" value="游戏"></el-option>-->
 <!--            <el-option label="订单号" value="2"></el-option>-->
@@ -34,7 +34,7 @@
       </div>
     </div>
     <!--    表格-->
-    <div id="business-exa-table">
+    <div id="business-exa-table" style="margin-left: 2%">
       <div id="mytable">
         <el-table
           ref="multipleTable"
@@ -90,11 +90,11 @@
             label="操作"
             width="180">
             <template slot-scope="scope" >
-              <div v-if="(scope.row.status==='待审核'||scope.row.status=='')">
+              <div v-if="(scope.row.auditStatus==='待审核'||scope.row.auditStatus=='')">
                 <el-button  type="text" size="small" style="background-color: green;" class="button" @click="sucessCheck(scope.row)">通过</el-button>
                 <el-button type="text" size="small" style="background-color: red;" class="button" @click="test(scope.row)">拒绝</el-button>
               </div>
-              <span v-else-if="scope.row.status==='审核通过'" style="color: green">已通过</span>
+              <span v-else-if="scope.row.auditStatus==='审核通过'" style="color: green">已通过</span>
               <span v-else style="color: red">已拒绝</span>
               <!--拒绝理由的框-->
               <div>
@@ -137,42 +137,43 @@
     </div>
 
     <!--     查看的框-->
-    <el-dialog :title="EmploymentCurr.title" :visible.sync="seeVisible">
+    <el-dialog title="招聘信息" :visible.sync="seeVisible" >
+      <div style="margin-bottom: 10px">
+        <span style="font-size: 30px;color:cornflowerblue">{{EmploymentCurr.title}}</span>
+      </div>
       <el-row>
         <el-col :span="12"><div class="grid-content bg-purple">
           <div class="seeDiv">
-          <span>招{{EmploymentCurr.num}}人</span>
+            <span>招<span style="color:coral;font-size: 24px ">{{EmploymentCurr.num}}</span>人</span>
         </div>
         </div></el-col>
         <el-col :span="12"><div class="grid-content bg-purple-light">
-          <div class="seeDiv">
-            <span> {{EmploymentCurr.contactPhone}}</span>&nbsp;<span>元/月</span>
+          <div class="seeDiv" style="float: right">
+            <span style="color: coral;font-size: 30px"> {{EmploymentCurr.salary}}</span>&nbsp;<span style="color: coral;font-size: 10px">元/月</span>
           </div>
         </div></el-col>
       </el-row>
           <div class="seeDiv">
-            <span>{{EmploymentCurr.province}}-{{EmploymentCurr.city}}</span>
+            <span>工作地点：</span>
+            <span style="font-size: 18px;color: #0096FA">{{EmploymentCurr.province}}-{{EmploymentCurr.city}}</span>
           </div>
 
       <el-row>
         <el-col :span="12"><div class="grid-content bg-purple">
           <div class="seeDiv">
-          <span>{{EmploymentCurr.welfare}}</span>
+          <span style="background-color:gold;padding: 2px 7px 2px;">{{EmploymentCurr.welfare}}</span>
         </div></div></el-col>
         <el-col :span="12"><div class="grid-content bg-purple-light">
           <div class="seeDiv">
             <span>工作时长：</span>
-            {{EmploymentCurr.workingHours}}
+            <span style="color: #f56c6c;font-size: 18px">{{EmploymentCurr.workingHours}}小时</span>
           </div>
         </div>
         </el-col>
       </el-row>
           <div class="seeDiv">
-            <div v-if ="(EmploymentCurr.salary=='')">
-              <span>薪水：</span>面谈
-            </div>
-            <div v-else>
-              <span>详细描述：</span>
+            <div>
+              <span style="color:coral;font-size: 20px">详细描述：</span>
               <div>
                 {{EmploymentCurr.description}}
               </div>
@@ -246,7 +247,6 @@
       toSee(row){
         this.EmploymentCurr = { ...row };
         this.seeVisible = true;
-        console.log(this.EmploymentCurr)
       },
 
       test(row) {
@@ -302,11 +302,14 @@
       },
 // 通过函数
       async sucessCheck(row) {
-        if (row.status=='待审核'||row.status=='') {
-          row.status = '审核通过';
+        if (row.auditStatus=='待审核'||row.auditStatus=='') {
+          row.auditStatus = '审核通过';
         }
-        // row.status = '待审核';
+        // row.auditStatus = '待审核';
         try {
+          delete row.publishTime;
+          delete row.endTime;
+          delete row.startTime;
           let res = await saveOrUpdateEmployment(row);
           this.findAllEmp();
         }catch (e) {
@@ -314,9 +317,12 @@
       },
 //拒绝函数
       async disCheck(row) {
-        row.status = '拒绝';
+        row.auditStatus = '拒绝';
         this.dialogFormVisible=false;
         try {
+          delete row.publishTime;
+          delete row.endTime;
+          delete row.startTime;
           let res = await saveOrUpdateEmployment(row);
           this.findAllEmpiness();
         }catch (e) {
@@ -327,10 +333,10 @@
         try {
           let res = await findAllEmployment();
           this.tableData=res.data;
-          let statusArr = res.data.map(item=>{
+          let auditStatusArr = res.data.map(item=>{
             return item.job;
           });
-          this.options=[...new Set(statusArr)];
+          this.options=[...new Set(auditStatusArr)];
           // console.log(this.tableData);
           // console.log(this.options);
         }catch (e) {

@@ -80,7 +80,6 @@
 //引入方法
 import { findAllWithJobhAndEmpl } from "@/api/employment.js";
 
-
 export default {
   data() {
     return {
@@ -120,7 +119,7 @@ export default {
       try {
         // 等待findAllWithJobhAndEmpl方法的调用
         let res = await findAllWithJobhAndEmpl();
-        this.findAllWithJobhAndEmplData = res.data; 
+        this.findAllWithJobhAndEmplData = res.data;
       } catch (error) {
         config.errorMsg(this, "查找错误");
       }
