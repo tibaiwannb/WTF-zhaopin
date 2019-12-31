@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+=======
+/*
+ * @Author: liuyr 
+ * 商家列表页面
+ * @Date: 2019-12-23 17:11:53 
+ * @Last Modified by: lins
+ * @Last Modified time: 2019-12-28 17:19:40
+ */
+>>>>>>> 34151c726acb5b88cb2be93576bcd04c849c2989
 <template>
   <div id="businessList">
     <div class="searchDiv">
@@ -219,6 +229,7 @@ import config from "@/utils/config.js";
 export default {
   data() {
     return {
+      dialogTitle:'',
       //省份
       province: "",
       //城市
@@ -450,14 +461,21 @@ export default {
     },
     //编辑
     toEdit(row) {
+<<<<<<< HEAD
       this.msg = "修改成功";
+=======
+>>>>>>> 34151c726acb5b88cb2be93576bcd04c849c2989
       this.dialogTitle = "编辑商家信息";
       this.currentBus = { ...row };
       this.editVisible = true;
     },
     //添加
+<<<<<<< HEAD
     toadd() {
       this.msg = "新增成功";
+=======
+    toadd(row) {
+>>>>>>> 34151c726acb5b88cb2be93576bcd04c849c2989
       this.dialogTitle = "新增商家信息";
       this.currentBus={};
       this.editVisible = true;
